@@ -1,0 +1,96 @@
+﻿@model ECommerce.Models.Customer
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+ }
+<style>
+    body {
+        background: #ffffff !important;
+    }
+</style>
+@using (Html.BeginForm("EditCustomer", "Home", FormMethod.Post))
+{
+    <div class="form-horizontal">
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        @Html.ValidationMessage("error")
+        <div class="form-group">
+            @Html.LabelFor(c => c.FirstName, htmlAttributes: new { @class = "cntrol-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(c => c.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(c => c.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.LastName, htmlAttributes: new { @class = "cntrol-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(c => c.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(c => c.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.Email, htmlAttributes: new { @class = "cntrol-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(c => c.Email, new { htmlAttributes = new { @class = "form-control", @data_val = "false" } } )
+                @Html.ValidationMessageFor(c => c.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.Password, htmlAttributes: new { @class = "cntrol-label col-md-4" })
+            <div class="col-md-8">
+                @Html.PasswordFor(c => c.Password, new { @class = "form-control", @data_val = "false" })
+                @Html.ValidationMessageFor(c => c.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.ConfirmPassword, new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.PasswordFor(c => c.ConfirmPassword, new { @class = "form-control", @data_val = "false" })
+                @Html.ValidationMessageFor(c => c.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.Country, htmlAttributes: new { @class = "cntrol-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(c => c.Country, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(c => c.Country, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.City, htmlAttributes: new { @class = "cntrol-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(c => c.City, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(c => c.City, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.PostCode, htmlAttributes: new { @class = "cntrol-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(c => c.PostCode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(c => c.PostCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.Address, htmlAttributes: new { @class = "cntrol-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(c => c.Address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(c => c.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.Phone, htmlAttributes: new { @class = "cntrol-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(c => c.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(c => c.Phone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-8">
+                <input class="btn btn-info" type="submit" value="Update" />
+            </div>
+        </div>
+    </div>
+}
+
+
+
+

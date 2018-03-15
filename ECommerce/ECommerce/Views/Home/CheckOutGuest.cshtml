@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Order Details";
+}
+<div class="pageHeader page-header">
+    <h3>Your Details</h3>
+</div>
+
+@using (Html.BeginForm("CheckOutNow", "Home", new { Id = Session["userId"] }))
+{
+    <div class="row">
+        @if (Session["userId"] == null) { 
+        <div class="col-md-6">
+            <fieldset>
+                <legend class="bg-info">Shipping Details</legend>
+               
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.Label("First Name", htmlAttributes: new { @class = "cntrol-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.Editor("txtFirstName", new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessage("txtFirstName", "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Last Name", htmlAttributes: new { @class = "cntrol-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.Editor("txtLastName", new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessage("txtLastName", "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Email", htmlAttributes: new { @class = "cntrol-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.Editor("txtEmail", new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessage("txtEmail", "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Country", htmlAttributes: new { @class = "cntrol-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.Editor("txtCountry", new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessage("txtCountry", "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("City", htmlAttributes: new { @class = "cntrol-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.Editor("txtCity", new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessage("txtCity", "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("PostCode", htmlAttributes: new { @class = "cntrol-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.Editor("txtPostCode", new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessage("txtPostCode", "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Address", htmlAttributes: new { @class = "cntrol-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.Editor("txtAddress", new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessage("txtAddress", "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Phone", htmlAttributes: new { @class = "cntrol-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.Editor("txtPhone", new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessage("txtPhone", "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+               
+            </fieldset>
+        </div>
+        }
+        <div class="col-md-6">
+            <fieldset>
+                <legend class="bg-info">Payment Details</legend>
+            </fieldset>
+        </div>
+    </div>
+    <br />
+    <div class="btn-group text-center">
+        <input class="btn btn-info" type="submit" value="Confirm Order" />
+    </div>
+}
+
+
+
+
+

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ECommerce.Models.Product>
+
+@{
+    ViewBag.Title = "Products";
+}
+<style>
+    body {
+        background: #ffffff !important;
+    }
+</style>
+<div class="container" style="background:#eeeeee">
+    <div class="pageHeader page-header">
+        <h3>Welcome to the Jeans-Shop</h3>
+    </div>
+</div>
+<div class="container" id="filter">
+   
+    @using (Html.BeginForm())
+    {
+        <div class="form-inline">
+            
+                @Html.DropDownList("CategoryName", null, "Jean's Style", new { @class = "form-control" })
+                <input class="btn btn-default" type="submit" value="Filter" />
+            
+            
+        </div>
+    }
+</div>
+    <div class="container" id="products">
+
+        <div class="allProducts">
+            @foreach (var item in Model)
+            {
+                <article class="product">
+                    <figure>
+                        <img src="~/Home/getImage/@item.Id" alt="" />
+                    </figure>
+                    <figcaption class="details">
+                        @Html.ActionLink((string)@item.Name, "Details", new { id = item.Id })
+                        
+                            <strong class="price">&#163;@item.Price</strong>
+                        
+
+                    </figcaption>
+
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href='@Url.Action("Details", "Home", new { id = item.Id})' class="btn btn-info">View</a>
+                        </div>
+                        <div class="col-md-6">
+                           @if (item.InStock == true)
+                           {
+                               using (Html.BeginForm("AddToCart", "Cart", new { Id = item.Id, quantity = 1 }))
+                               {
+                               
+                                <input class="btn btn-info" type="submit" value="Add to Cart" />
+                               }
+                           }
+                           else
+                           {
+                            <div><p class="text-danger" style="font-weight:700">Sold Out</p></div>
+                           }
+                        </div>
+                    </div>
+
+                </article>
+
+            }
+        </div>
+
+    </div>
+
+
+

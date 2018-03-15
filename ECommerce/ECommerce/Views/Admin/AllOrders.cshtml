@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ECommerce.Models.Order>
+
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th scope="col">
+                #
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(p => p.Date)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(p => p.Amount)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(p => p.IsShipped)
+            </th>
+            <th scope="col">
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(p => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(p => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(p => item.Amount)
+                </td>
+                <td>
+                    @if (item.IsShipped == false)
+                    {
+                        <p style="color:#ff0000">In process</p>
+                    }
+                    @if (item.IsShipped == true)
+                    {
+                        <p style="color:#00ff90">Dispached</p>
+                    }
+                </td>
+                <td>
+                    <div class="btn-group">
+                        @Html.ActionLink("Mark as Dispached", "EditOrder", "Admin", new { id = item.Id }, new { @class = "btn btn-success" })
+                        @Html.ActionLink("Details", "AllOrderDetails", "Admin", new { id = item.Id }, new { @class = "btn btn-info" })
+                       
+                    </div>
+
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>

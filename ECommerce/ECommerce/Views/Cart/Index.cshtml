@@ -1,0 +1,68 @@
+﻿@model ECommerce.Models.CartIndexViewModel
+
+@{
+    ViewBag.Title = "Shopping Cart";
+}
+
+<div class="pageHeader page-header">
+    <h5>Your Shopping Cart</h5>
+</div>
+<div class="container" id="cart">
+    @if (Model.cart.Lines.Count() == 0) {
+        <div class="text-center text-info"><p style="font-size:15px;font-weight:700">Shopping Cart empty</p></div>
+    }
+    <table class="table table-responsive table-striped">
+        <thead>
+            <tr>
+                <th>Quantity</th>
+                <th>Item</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Subtotal</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.cart.Lines)
+            {
+                <tr>
+                    <td>
+                        @item.Quantity
+                    </td>
+                    <td>
+                        <img src="~/Home/getImage/@item.Product.Id" alt="" style="width:20%" />
+                    </td>
+                    <td>
+                        @item.Product.Name
+                    </td>
+                    <td>
+                        &#163;@item.Product.Price
+                    </td>
+                    <td>&#163;@(item.Quantity * item.Product.Price)</td>
+                    <td><a href='@Url.Action("RemoveFromCart", "Cart", new { id = item.Product.Id})' class="btn btn-danger">Remove</a></td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">Total</td>
+                <td>&#163;@Model.cart.totalValue()</td>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+<div class="container">
+    <div class="btn-group" style="padding:8px 16px">
+        <a class="btn btn-info" href=@Url.Action("Products", "Home", new { category = TempData["category"], searchString = Session["search"] })>Continue Shoping</a>
+        @if (Session["UserId"] != null)
+        {
+        <a class="btn btn-success" href=@Url.Action("CheckOutGuest", "Home", new { id = Session["userId"]})>CheckOut</a>
+        
+        }
+        @if (Session["userId"] == null)
+        {
+            <a class="btn btn-success" href="~/Home/CheckOut">Log in to Check Out</a>
+        }
+
+    </div>
+</div>

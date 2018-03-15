@@ -1,0 +1,80 @@
+﻿@model ECommerce.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+    body {
+        background:#eeeeee;
+    }
+</style>
+
+<div class="container" id="details">
+    <div class="row jumbotron">
+        <div class="col-sm-6">
+            <img src="~/Home/getImage/@Model.Id" alt="" style="width:70%"/>
+        </div>
+        <div class="col-sm-6">
+            <dl class="dl-vertical">
+                <dt>
+                    @Html.DisplayNameFor(c => c.Name)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(c => c.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(c => c.Category)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(c => c.Category)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(c => c.Price)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(c => c.Price)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(c => c.Description)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(c => c.Description)
+                </dd>
+                
+            </dl>
+            
+            @if (Model.InStock == true)
+            {
+                <div>
+                    <p class="text-success" style="font-size:19px;font-weight:700">
+                        In Stock &nbsp;
+                        @if (Model.Quantity <= 5)
+                        {
+                            <span class="text-warning" style="font-size:14px;font-weight:500">(Only few items left)</span>
+                        }
+                    </p>
+                </div>
+
+
+                using (Html.BeginForm("AddToCart", "Cart", new { Id = Model.Id, quantity = 0 }))
+                {
+                    <p style="font-size:18px;font-weight:700">Amount:</p>
+                    <input class="input-sm" id="Amount" name="txtAmount" type="text" />
+                    <p class="text-danger" style="font-size:12px">@TempData["ErrorMessage"]</p>
+                    <input class="btn btn-info" type="submit" value="Add to Cart" />
+                }
+                <hr/>
+            }
+            else
+            {
+                <div><p class="text-danger" style="font-weight:700">Sold Out</p></div> 
+            }
+            
+            
+                <a href='@Url.Action("Products", "Home", new {category = TempData["category"],searchString = Session["search"]})' class="btn btn-info pull-left">Continue Shopping</a>
+            
+        </div>
+    </div>
+</div>
+
+

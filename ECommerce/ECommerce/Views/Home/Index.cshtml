@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+    <button type="button" id="sidebarCollapse" class="btn btn-block">
+        <span class="text-warning">Go to Shop</span>
+    </button>
+    
+
+        <ul id="sidebar" class="list-unstyled">
+            <li class="btn"><a href=@Url.Action("Products", "Home")>All Jeans</a></li>
+            <li class="btn"><a href=@Url.Action("Products", "Home", new {searchString = "skinny"})>Skinny Jeans</a></li>
+            <li class="btn"><a href=@Url.Action("Products", "Home", new {searchString = "boyfriend"})>Boyfriend Jeans</a></li>
+            <li class="btn"><a href=@Url.Action("Products", "Home", new {searchString = "straight"})>Straight Fit Jeans</a></li>
+            <li class="btn"><a href=@Url.Action("Products", "Home", new {searchString = "distressed"})>Distressed Jeans</a></li>
+        </ul>
+    
+    <div class="wrapper">
+
+            <div class="imageWrapper">
+                <img class="overImage" src="~/Content/images/jeans.jpg" />
+               
+            </div>
+            <div class="slogan">
+                <svg width="500" height="150">
+                    <defs>
+                        <filter id="filter" height="1.4" width="1.4">
+                            <feTurbulence baseFrequency="0.05" numOctaves="16" type="turbulence" result="result1" />
+                            <feDisplacementMap in2="result1" scale="99" result="result2" xChannelSelector="R" in="SourceGraphic" />
+                            <feComposite in2="result2" in="SourceGraphic" operator="atop" result="fbSourceGraphic" />
+                        </filter>
+                    </defs>
+
+                    <rect fill="#222222" filter="url(#filter)" width="500" height="100" x="0" y="0" />
+                    <foreignObject width="500" height="500">
+
+                        <div>
+
+                            <h1>Jeans for every Occasion</h1>
+
+
+                        </div>
+
+                    </foreignObject>
+
+
+                </svg>
+                
+            </div>
+
+       
+    </div>  
+   
+    
+    
+</div>

@@ -1,0 +1,71 @@
+﻿@model ECommerce.Models.Product
+
+@{
+    ViewBag.Title = "Edit Product";
+}
+<style>
+    body {
+        background: #ffffff !important;
+    }
+</style>
+<div class="container" style="background:#eeeeee">
+    <div class="page-header pageHeader">
+        <h2>Edit Product</h2>
+    </div>
+    @using (Html.BeginForm("EditProduct", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+    {
+
+
+        <div class="form-horizontal edit-record">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(p => p.Name, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(p => p.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(p => p.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(p => p.Price, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(p => p.Price, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(p => p.Price, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(p => p.Category, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(p => p.Category, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(p => p.Category, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(p => p.Quantity, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(p => p.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(p => p.Quantity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(p => p.Description, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(p => p.Description, 10, 40, new { htmlAttributes = new { @class = "form-control" } } )
+                    @Html.ValidationMessageFor(p => p.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input class="col-md-offset-2 col-md-10" type="file" name="ImageData" id="ImageData" />
+        </div>
+        <div class="form-group">
+            <input class="btn btn-success col-md-offset-2" type="submit" value="Upload" />
+        </div>
+       <br />
+       <br />
+
+    }
+</div>

@@ -1,0 +1,22 @@
+﻿@model ECommerce.Models.Customer
+
+@{
+    ViewBag.Title = "Log In";
+}
+<div class="pageHeader page-header">
+    <h3>Your Details</h3>
+    <p>Please Log In or Check out as Guest to proceed with your Order</p> 
+</div>
+<a href="@Url.Action("CheckOutGuest", "Home")" class="btn btn-warning">Proceed as Guest</a>
+<br/> <br/>
+    <div class="row">
+        <div class="col-md-6">
+   @Html.Action("LogInCustomer")
+            </div>
+
+<div class="col-md-6">
+    @Html.Action("AddCustomer")
+    </div>
+</div>
+   
+

@@ -1,0 +1,195 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-image: url('images/jeans-ripped.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#sidebar {
+    display:none;
+    width:100%;
+    background: transparent;
+    color: #000;
+    text-align:justify;
+    transform:translate3d(0,0,0);
+    -webkit-transform:translate3d(0,0,0);
+}
+
+    #sidebar.active{
+        display:inline-block;
+    }
+
+    a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+ ul#sidebar li a{
+    width:100%;
+    border-radius: 5px;
+    border: 1px solid transparent!important;
+    background-color: #222222;
+    color:#fff;   
+    padding: 8px;
+    font-size: 1.1em;
+    display:inline-block;
+}
+ ul#sidebar li a:hover{
+    /*color: #222222;
+    background: #fff;*/
+    opacity: 0.75;
+}
+
+svg {
+  position:relative;
+  top:30%;
+  width: 100%; 
+}
+
+.overImage{
+    padding:5px;
+    width:100%;
+    
+}
+
+.imageWrapper {
+    padding: 8px 16px;
+    float:left;
+    width:50%
+}
+
+.slogan {
+   
+    text-align:center;
+    width:50%;
+    float:right;
+    color:#fff;
+}
+
+    .slogan h1 {
+         padding:20px;
+    }
+
+
+button#sidebarCollapse{
+        position:relative;
+        background-color:#222222;
+        color:#fff;
+        
+}
+ 
+button#sidebarCollapse:focus {
+    outline:0;
+    border:none;
+}
+
+    button#sidebarCollapse:hover span {
+        color:#fff; 
+    }
+.pageHeader {
+    padding: 8px 16px;
+    background-color: #fff;
+    opacity: 0.55;
+    text-align:center;     
+}
+div.container#products,div.container#details, div.container#cart, fieldset,
+div.container#guest, div.container#orders, div#display{
+    background: #eeeeee; 
+    padding: 8px 16px;                
+}
+div.container#filter {
+    
+    background:#5bc0de;
+    padding: 8px 16px;    
+}
+
+div.container#details {
+    background:#fff!important;   
+}
+
+.bg-info {
+    padding:8px 16px;
+    background:#5bc0de;
+    font-size: 20px!important;
+    text-align:center!important; 
+    color:#fff;
+    border-radius:3px;          
+}
+div.container#cart{
+    margin-top: 5%;   
+}
+.allProducts{
+    margin-top: 5%; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: auto;
+    width: 100%;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: auto;
+    width: 100%;
+}
+
+.product {   
+    margin: 1%;
+    width: 225px;
+    height:350px;   
+    text-align: center;
+}
+    .product img {
+        width:100%;
+    }
+
+figure {
+    cursor: pointer;
+    margin: 0;    
+    height:230px;
+}
+
+.details {  
+    font-size: 0.8em;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+.price {
+    display: block;
+}
+
+dt {
+    font-size:15px;
+}
+
+dd {
+    font-size:14px;
+}
+
+
+    @media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+}

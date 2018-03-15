@@ -1,0 +1,29 @@
+﻿@model ECommerce.Models.Customer
+
+@{
+    ViewBag.Title = "Account";
+}
+<style>
+    body {
+        background: #ffffff !important;
+    }
+</style>
+<div class="pageHeader page-header">
+    <h2> @Model.FirstName @Model.LastName Account</h2>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="btn-group-vertical" style="position:fixed">
+                <button class="btn btn-info" id="edit">View Details</button>
+                <button class="btn btn-info" id="cart">View Shopping Cart</button>
+                <button class="btn btn-info" id="order">View Placed Orders</button>
+                @Html.ActionLink("Continue Schopping", "Products", "Home", new { category = TempData["category"], searchString = Session["search"] }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Log Out", "LogOut", "Home", new { Id = Model.Id }, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+        <div class="col-md-9" id="display">   
+        </div>
+    </div>
+</div>
+

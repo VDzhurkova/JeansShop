@@ -1,0 +1,24 @@
+﻿@model Tuple<ECommerce.Models.Customer, ECommerce.Models.Cart>
+i<div class="navbar-right pull-right">
+    @Html.ActionLink("CheckOut", "Index", "Cart", new { @class = "btn btn-warning navbar-btn"})
+</div>
+<div class="navbar-text navbar-right">
+    @Model.Item2.Lines.Sum(x=>x.Quantity) item(s), &#163;@Model.Item2.totalValue()
+</div>
+<div class="navbar-text navbar-right">
+
+    @if(Session["userId"] != null) { 
+    @Html.ActionLink((string)@Session["userName"], "Account", "Home", new { Id = Session["userId"] }, null)
+    } 
+    @if (Session["userId"] == null)
+    {
+        if (Session["userName"] != null) {
+            @Html.ActionLink((string)@Session["userName"], "Index", "Admin")
+        }
+        else
+        {
+            @Html.ActionLink("Log In", "CheckOut", "Home")
+        }
+    }
+   
+</div>

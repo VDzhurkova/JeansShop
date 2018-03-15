@@ -1,0 +1,27 @@
+﻿@model IEnumerable<ECommerce.Models.OrderDetail>
+
+<table class="table table-responsive">
+    <thead style="background:#0094ff;color:#ffffff">
+        <tr><td>Product</td> <td>Quantity</td> <td>Price</td></tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    @Html.Action("ViewProduct", new { Id = @item.ProductId })
+                </td>
+                <td class="text-center">
+                    @item.Quantity
+                </td>
+                <td>
+                    &#163;@item.Price
+                </td>
+            </tr>
+
+        }
+    </tbody>
+
+</table>

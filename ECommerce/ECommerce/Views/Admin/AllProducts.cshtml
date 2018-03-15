@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ECommerce.Models.Product>
+
+
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(p => p.Image)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(p => p.Name)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(p => p.Price)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(p => p.Quantity)
+            </th>
+            
+            <th scope="col">
+                @Html.DisplayNameFor(p => p.InStock)
+            </th>
+            <th scope="col">
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="text-danger"><td><p class="text-danger">@TempData["ErrorMessage"]</p></td></tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/Home/getImage/@item.Id" alt="" style="width:10%" />
+                   
+                </td>
+                <td>
+                    @Html.DisplayFor(p=>item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(p=>item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(p=>item.Quantity)
+                </td>
+                <td>
+                    @if (item.InStock == false) {
+                    <p style="color:#ff0000">Sold Out</p>
+                    }
+                    @if (item.InStock == true)
+                    {
+                        <p style="color:#00ff90">In Stock</p>
+                    }
+                </td>
+                <td>
+                    <div class="btn-group">
+                        @Html.ActionLink("Edit", "EditProduct", new { id = item.Id }, new { @class = "btn btn-success" })
+                        @Html.ActionLink("Delete", "DeleteProduct", new { id = item.Id }, new { @class = "btn btn-danger" })
+                    </div>
+                   
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+
+

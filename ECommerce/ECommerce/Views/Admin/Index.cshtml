@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Admin Layout";
+}
+<style>
+    body {
+        background:#ffffff!important;
+    }
+</style>
+<div class="container" style="background:#eeeeee">
+    <div style="margin-top:3%">
+        @Html.ActionLink("Log Out", "LogOut", "Admin", null, new { @class = "btn btn-danger pull-right" })
+        @Html.ActionLink("Add new Product", "AddProduct", null, new { @class = "btn btn-success" })
+    </div>
+    <div class="page-header pageHeader">
+        <h4>Products</h4>
+    </div>
+    
+    @Html.Action("AllProducts", "Admin")
+    <br />
+</div>
+
+<div class="container" style="background:#eeeeee">
+    <div class="page-header pageHeader">
+        <h4>Orders</h4>
+    </div>
+
+    @Html.Action("AllOrders", "Admin")
+</div>

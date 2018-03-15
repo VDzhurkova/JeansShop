@@ -1,0 +1,81 @@
+﻿@model Tuple<ECommerce.Models.Order, ECommerce.Models.Customer>
+@{
+    ViewBag.Title = "Order Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    body {
+        background: #ffffff !important;
+    }
+</style>
+
+<div class="container" id="orders" style="margin-top:3%">
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Order #</th>
+                <th>Customer</th>
+                <th>Address</th>
+                <th>Order Date</th>
+                <th>Order Total</th>
+                <th>Order Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Model.Item1.Id
+                </td>
+                <td>@Model.Item2.FirstName @Model.Item2.LastName</td>
+                <td>
+                    <address>
+                        @Model.Item2.Address<br />
+                        @Model.Item2.City<br />
+                        @Model.Item2.Country<br />
+                        @Model.Item2.PostCode
+                    </address>
+                </td>
+                <td>
+                    @Model.Item1.Date
+                </td>
+                <td>
+                    &#163;@Model.Item1.Amount
+                </td>
+
+                @if (@Model.Item1.IsShipped == false)
+                {
+                    <td><p style="color:#0094ff">Processing Order....</p></td>
+                }
+
+                else
+                {
+                    <td>
+                        <p style="color:#00ff90">Dispatched</p>
+                        <p>@Html.ActionLink("Delete", "DeleteOrder", "Admin", new { id = Model.Item1.Id }, new { @class = "btn btn-danger" })</p>
+                    </td>
+
+                }
+
+            </tr>
+
+        </tbody>
+    </table>
+    <hr />
+    <table class="table table-responsive">
+        <thead>
+
+            <tr><th class="pull-left"><p>Order Items</p></th> </tr>
+
+        </thead>
+        <tbody>
+            <tr>
+                @Html.Action("ViewDetails", "Home", new { Id = @Model.Item1.Id })
+            </tr>
+
+
+        </tbody>
+
+    </table>
+
+
+</div>

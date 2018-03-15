@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - E-Commerce Demo</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            @Html.Action("Summary", "Cart")
+            <div class="navbar-brand">
+                @Html.ActionLink("Jeans-Shop", "Index", "Home", null, new { @class="text-warning" })
+            </div>
+        </div>
+        @*<div class="container">
+            <div class="navbar-header">
+                
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+     
+             </div>
+            <div class="navbar-collapse collapse" style="float:right">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Log In", "LogIn", "Home")</li>
+                    <li>@Html.Action("Summary", "Cart")</li>
+                    
+                </ul>
+            </div>
+        </div>*@
+    </div>
+    <div class="container">
+       
+        @RenderBody()
+        
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script>
+    $(document).ready(function () {
+
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+
+    });
+    </script>
+    <script>
+        $("#edit").click(function () {
+        $.get('@Url.Action("EditCustomer","Home", new { id = Session["userId"]})', {}, function (response) {
+            $("#display").html(response);
+        });
+        });
+        </script>
+    <script>
+        $("#cart").click(function () {
+            $.get('@Url.Action("Index","Cart", new { id = Session["userId"]})', {}, function (response) {
+                $("#display").html(response);
+            });
+        });
+    </script>
+    <script>
+        $("#order").click(function () {
+            $.get('@Url.Action("ViewOrder", "Home", new { id = Session["userId"]})', {}, function (response) {
+                $("#display").html(response);
+            });
+        });
+    </script>
+</body>
+</html>
